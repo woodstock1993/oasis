@@ -14,37 +14,34 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="css/contract.css">
+    <link rel="stylesheet" href="css/supply.css">
+    <link rel="stylesheet" href="css/books.css">
 
     <!-- JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script defer src="javascript/contract.js"></script>
+    <script defer src="javascript/books.js"></script>
 
-    <title>Contracts</title>
+    <title>Books</title>
 </head>
 <body>
-<div class="contract-input-box">
+<div class="books-input-box">
     <div class="input-group">
-        <span class="input-group-text">계약</span>
-        <input type="text" aria-label="계약일자" placeholder="계약일자" class="form-control contract-1">
-        <input type="text" aria-label="계약업체" placeholder="계약업체" class="form-control contract-4">
-        <input type="text" aria-label="최저가비율" placeholder="최저가비율" class="form-control contract-2">
-        <input type="text" aria-label="계약상태코드" placeholder="계약상태코드" class="form-control contract-3">
+        <span class="input-group-text">도서</span>
+        <input type="text" aria-label="도서명" placeholder="도서명" class="form-control book-1">
+        <input type="text" aria-label="도서구분" placeholder="도서구분" class="form-control book-2">
+        <input type="text" aria-label="수량" placeholder="수량" class="form-control book-3">
+        <input type="text" aria-label="공급단가" placeholder="공급단가" class="form-control book-4">
+        <input type="text" aria-label="저자" placeholder="저자" class="form-control book-5">
+        <input type="text" aria-label="발행일자" placeholder="발행일자" class="form-control book-6">
+        <input type="text" aria-label="정가" placeholder="정가" class="form-control book-7">
+        <input type="text" aria-label="적용할인율" placeholder="적용할인율" class="form-control book-8">
         <div class="d-grid gap-2 d-md-block">
             <button class="btn btn-primary" type="button" onclick="contractEnroll()">등록</button>
         </div>
     </div>
-    <div class="contract-block-wrapper">
-        <div class="contract-block contract-block-index">
-            <div class="contract-item">계약번호</div>
-            <div class="contract-item">계약업체</div>
-            <div class="contract-item">계약일자</div>
-            <div class="contract-item">최저가비율</div>
-            <div class="contract-item status-code">계약상태코드</div>
-        </div>
-    </div>
 </div>
-<div class="contract-wrapper">
-    <div class="contract-body"></div>
+<div class="books-wrapper">
+    <div class="books-body"></div>
 </div>
 <div class="edit-modal hidden">
     <div class="edit-modal-overlay"></div>

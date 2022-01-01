@@ -14,37 +14,31 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="css/contract.css">
+    <link rel="stylesheet" href="css/supply.css">
 
     <!-- JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script defer src="javascript/contract.js"></script>
-
-    <title>Contracts</title>
+    <script defer src="javascript/supplies.js"></script>
+    <title>Supplies</title>
 </head>
 <body>
-<div class="contract-input-box">
-    <div class="input-group">
-        <span class="input-group-text">계약</span>
-        <input type="text" aria-label="계약일자" placeholder="계약일자" class="form-control contract-1">
-        <input type="text" aria-label="계약업체" placeholder="계약업체" class="form-control contract-4">
-        <input type="text" aria-label="최저가비율" placeholder="최저가비율" class="form-control contract-2">
-        <input type="text" aria-label="계약상태코드" placeholder="계약상태코드" class="form-control contract-3">
-        <div class="d-grid gap-2 d-md-block">
-            <button class="btn btn-primary" type="button" onclick="contractEnroll()">등록</button>
-        </div>
-    </div>
+<div class="supply-block-wrapper">
     <div class="contract-block-wrapper">
         <div class="contract-block contract-block-index">
             <div class="contract-item">계약번호</div>
             <div class="contract-item">계약업체</div>
             <div class="contract-item">계약일자</div>
             <div class="contract-item">최저가비율</div>
-            <div class="contract-item status-code">계약상태코드</div>
+            <div class="contract-item status-code-supply">계약상태코드</div>
         </div>
     </div>
-</div>
-<div class="contract-wrapper">
-    <div class="contract-body"></div>
+    <div class="supply-block-index"></div>
+    <div class="supply-block-median">
+        <div class="supply-item supply-head">공급</div>
+        <div class="supply-item supply-head" >공급번호</div>
+        <div class="supply-item supply-head supply-tail">공급일자</div>
+    </div>
+    <div class="supply-block-index-2"></div>
 </div>
 <div class="edit-modal hidden">
     <div class="edit-modal-overlay"></div>

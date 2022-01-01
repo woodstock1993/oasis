@@ -6,7 +6,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Getter
 public class ContractRequestDto {
+    private String contractCompany;
     private String contractDate;
-    private Long minPriceRatio;
+    private String minPriceRatio;
     private String contractCode;
 }

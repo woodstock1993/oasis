@@ -5,6 +5,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @NoArgsConstructor
 @Setter
@@ -17,13 +19,13 @@ public class Book {
     private Long id;
 
     @Column(nullable = false)
-    private String bookName;
+    private String bookTitle;
 
     @Column(nullable = false)
-    private String bookSection;
+    private String bookGenre;
 
     @Column(nullable = false)
-    private Long bookNumber;
+    private Long bookQuantity;
 
     @Column(nullable = false)
     private Long bookSupplyPrice;
@@ -32,11 +34,14 @@ public class Book {
     private String author;
 
     @Column(nullable = false)
-    private String bookPublishDate;
+    private String bookPublishedDate;
 
     @Column(nullable = false)
-    private Long bookPrice;
+    private Long bookFullPrice;
 
     @Column(nullable = false)
-    private Long dcRate;
+    private Long appliedDcRate;
+
+    @ManyToMany(mappedBy="books")
+    private List<Supply> supplies = new ArrayList<>();
 }

@@ -1,0 +1,39 @@
+.supply-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.supply-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.supply-block-index {
+    margin-bottom: 5rem;
+}
+
+.supply-item {
+    padding: 0.5rem;
+    width: 23.7rem;
+    border: 0.05rem solid #dcdcdc;
+}
+
+.supply-block-median {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.supply-head {
+    width: 23.7rem;
+}
+
+.supply-tail {
+    width: 31.4rem;
+}
+
+.status-code-supply {
+    width: 18.6rem;
+}

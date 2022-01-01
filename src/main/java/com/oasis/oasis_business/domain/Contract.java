@@ -7,7 +7,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
+@NoArgsConstructor
 @AllArgsConstructor
 @Setter
 @Getter
@@ -19,21 +21,31 @@ public class Contract extends Timestamped{
     private Long id;
 
     @Column(nullable = false)
+    private String contractCompany;
+
+    @Column(nullable = false)
     private String contractDate;
 
     @Column(nullable = false)
-    private Long minPriceRatio;
+    private String minPriceRatio;
 
     @Column(nullable = false)
     private String contractCode;
+
+    @OneToMany(mappedBy = "contract")
+    private List<Supply> supplies;
 
     public Contract(ContractRequestDto contractRequestDto) {
         this.contractDate = contractRequestDto.getContractDate();
         this.minPriceRatio = contractRequestDto.getMinPriceRatio();
         this.contractCode = contractRequestDto.getContractCode();
+        this.contractCompany = contractRequestDto.getContractCompany();
     }
 
-    public Contract() {
-
+    public void updateContract(ContractRequestDto contractRequestDto) {
+        this.contractDate = contractRequestDto.getContractDate();
+        this.minPriceRatio = contractRequestDto.getMinPriceRatio();
+        this.contractCode = contractRequestDto.getContractCode();
+        this.contractCompany = contractRequestDto.getContractCompany();
     }
 }

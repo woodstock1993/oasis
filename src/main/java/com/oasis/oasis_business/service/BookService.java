@@ -15,6 +15,11 @@ public class BookService {
 
     private final BookRepository bookRepository;
 
+    public Book getBook(Long id) {
+        return bookRepository.findById(id).orElseThrow(
+                ()-> new NullPointerException("도서고유번호가 없습니다."));
+    }
+
     public List<Book> getBooks() {
         return bookRepository.findAll();
     }

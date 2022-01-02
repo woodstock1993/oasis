@@ -14,6 +14,14 @@
     border: 0.05rem solid #dcdcdc;
 }
 
+.supply-item-3 {
+    width: 17.8rem;
+}
+
+.supply-block-index-2:nth-child(3) {
+    width: 20rem;
+}
+
 .supply-block-median {
     display: flex;
     justify-content: center;

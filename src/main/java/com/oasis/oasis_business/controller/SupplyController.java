@@ -13,7 +13,7 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @RestController //Bean 등록
-public class supplyController {
+public class SupplyController {
 
     //Bean으로 만들려는 클래스들 중에 private final은 Bean으로 지정된 class이어야 한다.
     private final SupplyRepository supplyRepository;

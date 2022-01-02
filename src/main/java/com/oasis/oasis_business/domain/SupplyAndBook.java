@@ -1,5 +1,6 @@
 package com.oasis.oasis_business.domain;
 
+import com.oasis.oasis_business.repository.SupplyAndBookRepository;
 import lombok.*;
 
 import javax.persistence.*;
@@ -7,7 +8,7 @@ import javax.persistence.*;
 @ToString(callSuper = true)
 @Setter
 @Getter
-@NoArgsConstructor // 인자없는 생성자 필요
+@RequiredArgsConstructor
 @Entity
 public class SupplyAndBook {
 
@@ -20,4 +21,10 @@ public class SupplyAndBook {
 
     @ManyToOne
     private Book book;
+
+     public SupplyAndBook(Supply supply, Book book) {
+        SupplyAndBook supplyAndBook = new SupplyAndBook();
+        supplyAndBook.setSupply(supply);
+        supplyAndBook.setBook(book);
+    }
 }

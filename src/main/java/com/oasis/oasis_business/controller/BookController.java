@@ -16,6 +16,12 @@ public class BookController {
     private final BookService bookService;
     private final BookRepository bookRepository;
 
+    @GetMapping("/book/{id}")
+    public Book getBook(@PathVariable Long id) {
+        Book book = bookService.getBook(id);
+        return book;
+    }
+
     @GetMapping("/books")
     public List<Book> getBooks() {
         return bookService.getBooks();

@@ -1,15 +1,11 @@
-.contract-wrapper {
+.sup_book-block-wrapper {
     margin-top: 5rem;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.contract-block-index {
-    margin-top: 5rem;
-}
-
-.contract-block-wrapper {
+.sup-block-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -23,17 +19,8 @@
 
 .contract-item {
     padding: 0.5rem;
-    width: 15rem;
+    width: 20rem;
     border: 0.05rem solid #dcdcdc;
-}
-
-.status-code {
-    width: 29rem;
-}
-
-
-.btn {
-    position: relative;
 }
 
 .edit-modal {
@@ -68,20 +55,6 @@
     border-radius: 0.3rem;
     width:60rem;
     height: 25%;
-}
-
-.edit-close-button {
-    cursor: pointer;
-    position: absolute;
-    right: 0.8rem;
-    top: 0.5rem;
-}
-
-.edit-button {
-    cursor: pointer;
-    position: absolute;
-    bottom: 0.5rem;
-    right: 0.8rem;
 }
 
 .hidden {

@@ -11,7 +11,7 @@ import java.util.List;
 
 @RequiredArgsConstructor //인수가 2개인 private final 생성자를 만들어준다.
 @RestController
-public class contractController {
+public class ContractController {
 
     private final ContractService contractService; //꼭 필요하다.
     private final ContractRepository contractRepository;

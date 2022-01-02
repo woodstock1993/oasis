@@ -6,11 +6,11 @@ function valueFilledCheck(a, b) {
     return true;
 }
 function supplyAndBookEnroll() {
-    let contractId = document.querySelector('.supplyAndBook-1').value;
+    let supplyId = document.querySelector('.supplyAndBook-1').value;
     let bookId = document.querySelector('.supplyAndBook-2').value;
 
-    if ((valueFilledCheck(contractId, bookId))) {
-        getSupplyAndBookData(contractId, bookId);
+    if ((valueFilledCheck(supplyId, bookId))) {
+        getSupplyAndBookData(supplyId, bookId);
     }
 }
 
@@ -19,34 +19,34 @@ function getSupplyAndBookData(supplyId, bookId) {
 
     $.ajax({
         type: "GET",
-        url: `/contracts/${supplyId}`,
+        url: `/supplies/${supplyId}`,
         contentType: "application/json",
-        success: function (res) {
-            console.log(res);
+        success: function (supply) {
+            console.log(supply[0].id);
             success++;
 
             $.ajax({
                 type: "GET",
                 url: `/book/${bookId}`,
                 contentType: "application/json",
-                success: function (res) {
-                    console.log(res);
+                success: function (book) {
+                    console.log(book.id);
                     success++;
                     if (success === 2) {
                         console.log("포스트요청 가동")
-
+                        console.log(supply[0],book);
                         $.ajax({
                             type: "POST",
                             url: "/supplybook",
                             contentType: "application/json",
                             data: JSON.stringify({
-                                Supply: `${supplyId}`,
-                                Book: `${bookId}`,
+                                supply: supply[0],
+                                book: book,
                             }),
                             success: function (res) {
                                 console.log(res);
-                                alert('공급 및 도서 고유번호가 등록되었습니다.')
-                                location.href = "supply_book.html"
+                                alert('공급 및 도서 고유번호가 등록되었습니다.');
+                                location.href="index.html";
                             },
                             error: function(request) {
                                 alert("ERROR: "+request.status + "\n" + "POST ERROR 발생");

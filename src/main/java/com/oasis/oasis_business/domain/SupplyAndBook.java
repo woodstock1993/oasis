@@ -1,11 +1,10 @@
 package com.oasis.oasis_business.domain;
 
-import com.oasis.oasis_business.repository.SupplyAndBookRepository;
+import com.oasis.oasis_business.dto.SupplyAndBookDto;
 import lombok.*;
 
 import javax.persistence.*;
 
-@ToString(callSuper = true)
 @Setter
 @Getter
 @RequiredArgsConstructor
@@ -22,9 +21,8 @@ public class SupplyAndBook {
     @ManyToOne
     private Book book;
 
-     public SupplyAndBook(Supply supply, Book book) {
-        SupplyAndBook supplyAndBook = new SupplyAndBook();
-        supplyAndBook.setSupply(supply);
-        supplyAndBook.setBook(book);
+     public SupplyAndBook(SupplyAndBookDto supplyAndBookDto) {
+        this.supply = supplyAndBookDto.getSupply();
+        this.book = supplyAndBookDto.getBook();
     }
 }

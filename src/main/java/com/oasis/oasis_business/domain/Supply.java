@@ -28,6 +28,7 @@ public class Supply extends Timestamped{
     @ManyToOne
     private Contract contract;
 
+    @JsonIgnore
     @OneToMany
     @JoinColumn(name="supply_id")
     @ToString.Exclude

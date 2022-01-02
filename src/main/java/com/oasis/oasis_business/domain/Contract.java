@@ -32,7 +32,7 @@ public class Contract extends Timestamped{
     @Column(nullable = false)
     private String contractCode;
 
-    @OneToMany(mappedBy = "contract")
+    @OneToMany
     private List<Supply> supplies;
 
     public Contract(ContractRequestDto contractRequestDto) {

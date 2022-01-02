@@ -11,6 +11,12 @@
     align-items: center;
 }
 
+.supBook-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .contract-block {
     display: flex;
     justify-content: center;
@@ -19,8 +25,18 @@
 
 .contract-item {
     padding: 0.5rem;
-    width: 20rem;
+    width: 23.7rem;
     border: 0.05rem solid #dcdcdc;
+}
+
+.supBook-item {
+    padding: 0.5rem;
+    width: 23.7rem;
+    border: 0.05rem solid #dcdcdc;
+}
+
+.supBook-3 {
+    width: 16rem;
 }
 
 .edit-modal {

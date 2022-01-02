@@ -22,7 +22,7 @@ public class SupplyController {
 
     @GetMapping("/supplies/{id}")
     public List<Supply> getSupplies(@PathVariable Long id) {
-        return supplyRepository.findAllByContractId(id);
+        return supplyService.getSupplies(id);
     }
 
     @PostMapping("/supplies/{id}")

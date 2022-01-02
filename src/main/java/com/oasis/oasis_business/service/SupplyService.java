@@ -7,11 +7,16 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @RequiredArgsConstructor
 @Service
 public class SupplyService {
     private final SupplyRepository supplyRepository;
+
+    public List<Supply> getSupplies(Long id) {
+        return supplyRepository.findAllByContractId(id);
+    }
 
     @Transactional
     public Supply createSupply(SupplyRequestDto supplyRequestDto) {

@@ -81,12 +81,6 @@ function deleteSupply(id) {
     })
 }
 
-//계약 아이디와 도서 아이디를 모달창을 열어서 등록해주는 부분
-function openEnrollSupplyAndBookID(id) {
-    modalEditInput.innerHTML =
-        ``
-    modal.classList.remove("hidden");
-}
 
 function getSupplies(id) {
     let supplyBlockIndex = document.querySelector('.supply-block-index-2');
@@ -98,19 +92,18 @@ function getSupplies(id) {
         contentType: "application/json",
         success: function (res) {
             console.log(res);
-            console.log(`length: ${res.length}`);
-            for(let i = 0; i < res.length; i++) {
-                let template = `
-                <div class="${res[i].id}-supply supply-block">                    
-                    <div class="supply-item ${res[i].id}-supply">공급</div>                        
-                    <div class="supply-item ${res[i].id}-supply-id">${res[i].id}</div>
-                    <div class="supply-item supply-item-3 ${res[i].id}-supply-date">${res[i].supplyDate}</div>
-                <div>
-                <button type="button" onclick ="openEnrollSupplyAndBookID(${res[i].id})" class="btn btn-success ${res[i].id}-contract-enroll">도서등록</button>
-                <button type="button" onclick ="openEditSupply(${res[i].id})" class="btn btn-primary ${res[i].id}-contract-edit">수정</button>
-                <button type="button" onclick ="deleteSupply(${res[i].id})" class="btn btn-danger ${res[i].id}-contract-delete">삭제</button>                                                                                                           
-                `
-                supplyBlockIndex.innerHTML += template;
+            for(let i = 0; i < res.length; i ++ ) {
+
+            let template = `
+            <div class="${res[i].id}-supply supply-block">                    
+                <div class="supply-item ${res[i].id}-supply">공급</div>                        
+                <div class="supply-item ${res[i].id}-supply-id">${res[i].id}</div>
+                <div class="supply-item supply-item-3 ${res[i].id}-supply-date">${res[i].supplyDate}</div>
+            <div>            
+            <button type="button" onclick ="openEditSupply(${res[i].id})" class="btn btn-primary ${res[i].id}-contract-edit">수정</button>
+            <button type="button" onclick ="deleteSupply(${res[i].id})" class="btn btn-danger ${res[i].id}-contract-delete">삭제</button>                                                                                                           
+            `
+            supplyBlockIndex.innerHTML += template;
             }
         },
         error: function(request) {

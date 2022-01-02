@@ -1,3 +1,8 @@
+$(document).ready(function () {
+    getSupplyAndBook();
+})
+
+
 function valueFilledCheck(a, b) {
     if( a==='' || b==='') {
         alert('빈칸 없이 입력해주세요.');
@@ -14,57 +19,52 @@ function supplyAndBookEnroll() {
     }
 }
 
-function getSupplyAndBookData(supplyId, bookId) {
-    let success = 0
+function getSupplyAndBook() {
+    let supplyBookItem = document.querySelector('.contract-body');
+    supplyBookItem.innerHTML = "";
 
     $.ajax({
         type: "GET",
-        url: `/supplies/${supplyId}`,
+        url: "/supplybook",
         contentType: "application/json",
-        success: function (supply) {
-            console.log(supply[0].id);
-            success++;
+        success: function (res) {
+            console.log(res);
+            for(let i = 0; i < res.length; i++) {
+                let template = `
+                   <div class="${res[i].id}-supBook supBook-block">                    
+                        <div class="supBook-item ${res[i].id}-supBook">공급과 도서 고유번호</div>                        
+                        <div class="supBook-item ${res[i].id}-supId">${res[i].supply.id}</div>
+                        <div class="supBook-item supBook-3 ${res[i].id}-BookId">${res[i].book.id}</div>
+                    <div>            
+                    <button type="button" onclick ="openEditSupBook(${res[i].id})" class="btn btn-primary ${res[i].id}-supBook-edit">수정</button>
+                    <button type="button" onclick ="deleteSupBook(${res[i].id})" class="btn btn-danger ${res[i].id}-supBook-delete">삭제</button>                                                                                                                                   
+                `
+                supplyBookItem.innerHTML += template;
+            }
 
-            $.ajax({
-                type: "GET",
-                url: `/book/${bookId}`,
-                contentType: "application/json",
-                success: function (book) {
-                    console.log(book.id);
-                    success++;
-                    if (success === 2) {
-                        console.log("포스트요청 가동")
-                        console.log(supply[0],book);
-                        $.ajax({
-                            type: "POST",
-                            url: "/supplybook",
-                            contentType: "application/json",
-                            data: JSON.stringify({
-                                supply: supply[0],
-                                book: book,
-                            }),
-                            success: function (res) {
-                                console.log(res);
-                                alert('공급 및 도서 고유번호가 등록되었습니다.');
-                                location.href="index.html";
-                            },
-                            error: function(request) {
-                                alert("ERROR: "+request.status + "\n" + "POST ERROR 발생");
-                            }
-                        })
-                    }
-                },
-                error: function(request) {
-                    alert("ERROR: "+request.status + "\n" + "\n" +
-                        "해당하는 도서고유번호"+`${contractId}`+"가 없습니다." + "\n" + "\n" +
-                        "유효한 도서고유 번호를 입력하세요");
-                }
-            })
         },
         error: function(request) {
-            alert("ERROR: "+request.status + "\n" + "\n" +
-                "해당하는 공급계약번호"+`${contractId}`+"가 없습니다." + "\n" + "\n" +
-                "유효한 공급계약 번호를 입력하세요");
+            alert("ERROR: "+request.status + "\n" + "GET ERROR 발생");
+        }
+    })
+}
+
+function getSupplyAndBookData(supplyId, bookId) {
+    $.ajax({
+        type: "POST",
+        url: `/supplybook/${supplyId}/${bookId}`,
+        contentType: "application/json",
+        data: JSON.stringify({
+            supply: supplyId,
+            book: bookId,
+        }),
+        success: function (res) {
+            console.log(res);
+            alert('공급 및 도서 고유번호가 등록되었습니다.');
+            location.href="supply_book.html";
+        },
+        error: function(request) {
+            alert("ERROR: "+request.status + "\n" + "POST ERROR 발생");
         }
     })
 }

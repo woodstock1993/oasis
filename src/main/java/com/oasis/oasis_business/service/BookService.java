@@ -30,4 +30,12 @@ public class BookService {
         bookRepository.save(book);
         return book;
     }
+
+    @Transactional
+    public void updateBooks(Long id, BookRequestDto bookRequestDto) {
+        Book book = bookRepository.findById(id).orElseThrow(
+                ()-> new NullPointerException("찾는 도서번호가 없습니다.")
+        );
+        book.updateBooks(bookRequestDto);
+    }
 }

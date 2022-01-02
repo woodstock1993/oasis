@@ -1,5 +1,6 @@
 package com.oasis.oasis_business.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.oasis.oasis_business.dto.BookRequestDto;
 import lombok.*;
 
@@ -43,9 +44,11 @@ public class Book extends Timestamped{
     @Column(nullable = false)
     private String appliedDcRate;
 
+
     @OneToMany
     @JoinColumn(name = "book_id")
     @ToString.Exclude
+    @JsonIgnore
     private List<SupplyAndBook> supplyAndBook = new ArrayList<>(); // null 방지
 
     public Book(BookRequestDto bookRequestDto) {
@@ -72,5 +75,16 @@ public class Book extends Timestamped{
 
     public void addSupplyAndBook(SupplyAndBook... supplyAndBook) {
         Collections.addAll(this.supplyAndBook, supplyAndBook);
+    }
+
+    public void updateBooks(BookRequestDto bookRequestDto) {
+        this.bookTitle = bookRequestDto.getBookTitle();
+        this.bookGenre = bookRequestDto.getBookGenre();
+        this.bookQuantity = bookRequestDto.getBookQuantity();
+        this.bookSupplyPrice = bookRequestDto.getBookSupplyPrice();
+        this.author = bookRequestDto.getAuthor();
+        this.bookPublishedDate = bookRequestDto.getBookPublishedDate();
+        this.bookFullPrice = bookRequestDto.getBookFullPrice();
+        this.appliedDcRate = bookRequestDto.getAppliedDcRate();
     }
 }

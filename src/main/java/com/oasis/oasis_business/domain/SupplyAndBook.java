@@ -15,6 +15,7 @@ public class SupplyAndBook {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+
     @ManyToOne
     private Supply supply;
 
@@ -24,5 +25,10 @@ public class SupplyAndBook {
      public SupplyAndBook(SupplyAndBookDto supplyAndBookDto) {
         this.supply = supplyAndBookDto.getSupply();
         this.book = supplyAndBookDto.getBook();
+    }
+
+    public SupplyAndBook(Supply supply, Book book) {
+         this.supply = supply;
+         this.book = book;
     }
 }

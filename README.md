@@ -8,10 +8,10 @@ API관련 문서링크: https://rumbling-olive-af4.notion.site/API-97537b4b2d044
 ## 기능
 ### ContractController
 - 특정 계약 생성
-특정 계약 수정
-특정 계약 삭제
-특정 계약 조회
-모든 계약 조회
+- 특정 계약 수정
+- 특정 계약 삭제
+- 특정 계약 조회
+- 모든 계약 조회
 
 ### SupplyController
 특정 공급 생성

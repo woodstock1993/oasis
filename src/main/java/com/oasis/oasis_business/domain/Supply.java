@@ -2,15 +2,17 @@ package com.oasis.oasis_business.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.oasis.oasis_business.dto.SupplyRequestDto;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
+@AllArgsConstructor
 @NoArgsConstructor
 @Getter
+@Setter
 @Entity
 public class Supply extends Timestamped{
 
@@ -26,8 +28,10 @@ public class Supply extends Timestamped{
     @ManyToOne
     private Contract contract;
 
-    @ManyToMany
-    private List<Book> books = new ArrayList<>();
+    @OneToMany
+    @JoinColumn(name="supply_id")
+    @ToString.Exclude
+    private List<SupplyAndBook> SupplyAndBook = new ArrayList<>();
 
     public Supply(SupplyRequestDto supplyRequestDto) {
         this.supplyDate = supplyRequestDto.getSupplyDate();
@@ -41,5 +45,9 @@ public class Supply extends Timestamped{
 
     public void updateSupply(SupplyRequestDto supplyRequestDto) {
         this.supplyDate = supplyRequestDto.getSupplyDate();
+    }
+
+    public void addSupplyAndBook(SupplyAndBook... supplyAndBook) {
+        Collections.addAll(this.SupplyAndBook, supplyAndBook);
     }
 }

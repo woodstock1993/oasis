@@ -62,10 +62,7 @@ function sendContractData() {
             alert('계약이 등록 되었습니다.')
             location.href = "index.html"
         },
-        error: function(request, status, error) {
-            console.log(request);
-            console.log(status);
-            console.log(error);
+        error: function(request) {
             alert("ERROR: "+request.status + "\n" + "POST ERROR 발생");
         }
     })
@@ -148,7 +145,7 @@ function deleteContract(id) {
             alert('계약내용이 삭제 되었습니다.')
             location.href = "index.html"
         },
-        error: function(request, status, error) {
+        error: function(request) {
             alert("ERROR: "+request.status + "\n" + "해당 계약과 관련된 공급데이터가 있습니다.");
         }
     })

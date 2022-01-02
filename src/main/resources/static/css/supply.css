@@ -4,12 +4,6 @@
     align-items: center;
 }
 
-.supply-block {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .supply-block-index {
     margin-bottom: 5rem;
 }

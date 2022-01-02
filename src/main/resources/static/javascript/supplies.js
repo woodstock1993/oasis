@@ -23,7 +23,7 @@ function valueFilledCheck2(a) {
 }
 
 function editSupply(id) {
-    let supplyDate = document.getElementsByClassName(`${id}-contract-2`)[0].textContent;
+    let supplyDate = document.querySelector('.i-contract-2').value;
     if (!valueFilledCheck2(supplyDate)) {
         return
     }
@@ -38,7 +38,7 @@ function editSupply(id) {
         success: function (res) {
             console.log(res);
             alert(`공급번호${id}의 공급일자가 수정되었습니다.`)
-            location.href = `/supplies.html?id=${id}`
+            location.href = `/supplies.html?id=${contractId}`
         },
         error: function(request) {
             alert("ERROR: "+request.status + "\n" + "PUT ERROR 발생");

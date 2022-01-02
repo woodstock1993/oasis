@@ -1,18 +1,19 @@
 package com.oasis.oasis_business.domain;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.oasis.oasis_business.dto.BookRequestDto;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
+@AllArgsConstructor
 @NoArgsConstructor
 @Setter
 @Getter
 @Entity
-public class Book {
+public class Book extends Timestamped{
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -25,10 +26,10 @@ public class Book {
     private String bookGenre;
 
     @Column(nullable = false)
-    private Long bookQuantity;
+    private String bookQuantity;
 
     @Column(nullable = false)
-    private Long bookSupplyPrice;
+    private String bookSupplyPrice;
 
     @Column(nullable = false)
     private String author;
@@ -37,11 +38,39 @@ public class Book {
     private String bookPublishedDate;
 
     @Column(nullable = false)
-    private Long bookFullPrice;
+    private String bookFullPrice;
 
     @Column(nullable = false)
-    private Long appliedDcRate;
+    private String appliedDcRate;
 
-    @ManyToMany(mappedBy="books")
-    private List<Supply> supplies = new ArrayList<>();
+    @OneToMany
+    @JoinColumn(name = "book_id")
+    @ToString.Exclude
+    private List<SupplyAndBook> supplyAndBook = new ArrayList<>(); // null 방지
+
+    public Book(BookRequestDto bookRequestDto) {
+        this.bookTitle = bookRequestDto.getBookTitle();
+        this.bookGenre = bookRequestDto.getBookGenre();
+        this.bookQuantity = bookRequestDto.getBookQuantity();
+        this.bookSupplyPrice = bookRequestDto.getBookSupplyPrice();
+        this.author = bookRequestDto.getAuthor();
+        this.bookPublishedDate = bookRequestDto.getBookPublishedDate();
+        this.bookFullPrice = bookRequestDto.getBookFullPrice();
+        this.appliedDcRate = bookRequestDto.getAppliedDcRate();
+    }
+
+    public Book(String bookTitle, String bookGenre, String bookQuantity, String bookSupplyPrice, String author, String bookPublishedDate, String bookFullPrice, String appliedDcRate) {
+        this.bookTitle = bookTitle;
+        this.bookGenre = bookGenre;
+        this.bookQuantity = bookQuantity;
+        this.bookSupplyPrice = bookSupplyPrice;
+        this.author = author;
+        this.bookPublishedDate = bookPublishedDate;
+        this.bookFullPrice = bookFullPrice;
+        this.appliedDcRate = appliedDcRate;
+    }
+
+    public void addSupplyAndBook(SupplyAndBook... supplyAndBook) {
+        Collections.addAll(this.supplyAndBook, supplyAndBook);
+    }
 }

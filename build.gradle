@@ -28,6 +28,10 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.7.1'
+    testCompileOnly 'junit:junit:4.13'
+    testRuntimeOnly 'org.junit.vintage:junit-vintage-engine'
 }
 
 test {
